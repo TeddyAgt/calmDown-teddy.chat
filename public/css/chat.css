@@ -1,0 +1,29 @@
+.chat-message {
+    position: relative;
+    padding: 16px;
+}
+
+.chat__username {
+    color: var(--pink-primary);
+}
+
+.chat-message::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    margin-right: 32px;
+}
+
+.chat-connection {
+    /*  */
+}
+
+.chat-connection::before {
+    background: var(--success);
+}

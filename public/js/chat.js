@@ -35,13 +35,13 @@ function handleSubmitMessageForm(e) {
 socket.on("chat_message", (msg) => {
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-message");
-    messageElem.textContent = `${msg.username}: ${msg.message}`;
+    messageElem.innerHTML = `<span class="chat__username">${msg.username}</span>: ${msg.message}`;
     messagesContainer.appendChild(messageElem);
 });
 
 socket.on("user_connection", (user) => {
     const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-connection");
-    messageElem.textContent = `${user.username} s'est connecté !`;
+    messageElem.classList.add("chat-message", "chat-connection");
+    messageElem.innerHTML = `<span class="chat-connection chat__username">${user.username}</span> s'est connecté !`;
     messagesContainer.appendChild(messageElem);
 });
