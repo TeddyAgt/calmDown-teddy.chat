@@ -1,0 +1,28 @@
+.overlay {
+    position: absolute;
+    backdrop-filter: blur(10px);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.username-modal {
+    background: var(--black);
+    border-radius: 4px;
+    border: 1px solid var(--pink-primary);
+    padding: 32px;
+    max-width: 420px;
+    width: 100%;
+}
+
+#username-form {
+    display: flex;
+}
+
+#username {
+    width: 100%;
+}

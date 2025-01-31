@@ -1,0 +1,19 @@
+{
+    "name0": "calmDown-teddy.chat",
+    "version": "1.0.0",
+    "description": "Simple chat app made to demonstrate Socket.io use",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "author": "TeddyAgt",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "socket.io": "^4.8.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    }
+}

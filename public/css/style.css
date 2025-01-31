@@ -1,0 +1,102 @@
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* variables */
+:root {
+    /* colors */
+    --black: #1c1c1c;
+    --white: #f7f7ff;
+    --pink-primary: #ed4f8a;
+
+    /* fonts */
+    --ff-main: "Poppins", serif;
+    --ff-title: "Poppins", serif;
+    --ff-code: "Source Code Pro", mono;
+
+    /* font sizes */
+    --fz-16: 1rem;
+    --fz-18: 1.125rem;
+    --fz-24: 1.5rem;
+    --fz-32: 2rem;
+}
+
+/* general */
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--ff-main);
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ff-title);
+}
+
+/* header */
+header {
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    color: var(--pink-primary);
+    font-size: var(--fz-32);
+    font-weight: 700;
+}
+
+.main-navigation {
+    font-family: var(--ff-code);
+    color: var(--pink-primary);
+}
+
+.navigation__link {
+    font-size: var(--fz-24);
+}
+
+/* footer */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    color: var(--pink-primary);
+}
+
+.footer__logo {
+    font-size: var(--fz-24);
+    font-weight: 700;
+}
+
+.networks {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 87px;
+}
+
+.networks__elem {
+    width: 32px;
+}
+
+.network__link img {
+    width: 100%;
+}
