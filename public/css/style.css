@@ -11,12 +11,22 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+}
+
 /* variables */
 :root {
     /* colors */
     --black: #1c1c1c;
+    --grey-dark: #363636;
     --white: #f7f7ff;
     --pink-primary: #ed4f8a;
+    --danger: #e74c3c;
 
     /* fonts */
     --ff-main: "Poppins", serif;
@@ -24,6 +34,7 @@ a {
     --ff-code: "Source Code Pro", mono;
 
     /* font sizes */
+    --fz-12: 0.75rem;
     --fz-16: 1rem;
     --fz-18: 1.125rem;
     --fz-24: 1.5rem;
@@ -47,6 +58,48 @@ h4,
 h5,
 h6 {
     font-family: var(--ff-title);
+}
+
+/* theme */
+.main-title {
+    font-size: var(--fz-32);
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: var(--fz-24);
+    margin-bottom: 16px;
+}
+
+.btn {
+    display: block;
+    border: none;
+    padding: 8px 16px;
+    background: none;
+    transition: opacity 0.2s ease-out;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn--primary {
+    background: var(--pink-primary);
+    color: var(--black);
+}
+
+.btn--primary--outlined {
+    background: var(--black);
+    border: 1px solid var(--pink-primary);
+    color: var(--pink-primary);
+}
+
+/* forms */
+.form-error {
+    font-size: var(--fz-12);
+    color: var(--danger);
 }
 
 /* header */

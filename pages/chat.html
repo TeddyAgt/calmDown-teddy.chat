@@ -29,7 +29,6 @@
     <div class="chat-container" id="chat-container"></div>
     <div class="messages"></div>
     <form id="message-form">
-        <input type="text" name="username" id="username" placeholder="Username">
         <input type="text" name="message" id="message" placeholder="Enter your message">
         <button type="submit" aria-label="Send" title="Send" class="">
             <img src="/icons/paper-plane.png" alt="">
@@ -50,18 +49,8 @@
         </ul>
     </footer>
 
-    <div class="overlay">
-        <article class="username-modal">
-            <h2>Choisis ton pseudo</h2>
-            <form id="username-form">
-                <input type="text" name="username" id="username">
-                <button type="submit">😺</button>
-            </form>
-        </article>
-    </div>
-
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="/js/chat.js"></script>
 </body>
 
 </html>

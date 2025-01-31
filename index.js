@@ -28,6 +28,11 @@ io.on("connection", (socket) => {
         console.log("User disconnected");
     });
 
+    socket.on("user_connection", (user) => {
+        console.log(`${user.username} is online`);
+        io.emit("user_connection", user);
+    });
+
     socket.on("chat_message", (msg) => {
         io.emit("chat_message", msg);
     });
