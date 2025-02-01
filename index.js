@@ -33,6 +33,11 @@ io.on("connection", (socket) => {
         io.emit("user_connection", user);
     });
 
+    socket.on("user_logout", (user) => {
+        console.log(`${user.username} is offline`);
+        io.emit("user_logout", user);
+    });
+
     socket.on("chat_message", (msg) => {
         io.emit("chat_message", msg);
     });

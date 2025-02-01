@@ -40,11 +40,6 @@
 
 #username {
     width: 100%;
-    padding: 4px 8px;
-    background: var(--grey-dark);
-    color: var(--white);
-    border-radius: 4px;
-    border: 1px solid var(--pink-primary);
 }
 
 .username-modal__back-link {

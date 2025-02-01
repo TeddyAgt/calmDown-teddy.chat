@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -26,13 +26,21 @@
         </nav>
     </header>
 
-    <div class="chat-container" id="chat-container"></div>
-    <form id="message-form">
-        <input type="text" name="message" id="message" placeholder="Enter your message">
-        <button type="submit" aria-label="Send" title="Send" class="">
-            <img src="/icons/paper-plane.png" alt="">
-        </button>
-    </form>
+    <main>
+        <section class="chat-section">
+            <h1 class="main-title">Chat <span class="main-title__hint">(pas celui qui miaule)</span></h1>
+            <div class="messages-container" id="messages-container"></div>
+            <form id="message-form" method="POST">
+                <div class="chat__input-group">
+                    <textarea name="message" id="message" placeholder="Ton message"></textarea>
+                    <button type="submit" aria-label="Envoyer" title="Envoyer"
+                        class="btn btn--square btn--primary--outlined">
+                        <img src="/icons/paper-plane.png" alt="">
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
 
     <!-- footer -->
     <footer>

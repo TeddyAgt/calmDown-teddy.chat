@@ -1,10 +1,40 @@
+/* page structure */
+.chat-section {
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.chat-section .main-title {
+    text-align: center;
+}
+
+.messages-container {
+    height: 500px;
+    border: 1px solid var(--pink-primary);
+    border-radius: 4px;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.chat__input-group {
+    display: flex;
+}
+
+#message {
+    width: 100%;
+    resize: none;
+    outline: none;
+}
+
+/* messages */
 .chat-message {
     position: relative;
-    padding: 16px;
+    padding-left: 16px;
 }
 
 .chat__username {
     color: var(--pink-primary);
+    font-weight: 600;
 }
 
 .chat-message::before {
@@ -26,4 +56,8 @@
 
 .chat-connection::before {
     background: var(--success);
+}
+
+.chat-logout::before {
+    background: var(--danger);
 }
