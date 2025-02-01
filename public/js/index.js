@@ -9,12 +9,28 @@ const errorMessageElement = document.querySelector(
 
 overlay.addEventListener("click", hideUsernameModal);
 usernameModal.addEventListener("click", (e) => e.stopPropagation());
-chatBtn.addEventListener("click", showUsernameModal);
+chatBtn.addEventListener("click", handleClickChatBtn);
 cancelBtn.addEventListener("click", hideUsernameModal);
 usernameForm.addEventListener("submit", handleSubmitUsernameForm);
 
-function showUsernameModal(e) {
+function handleClickChatBtn(e) {
     e.preventDefault();
+    const username = document.cookie
+        .split("; ")
+        .find((brownie) => brownie.startsWith("username="))
+        ?.split("=")[1];
+    console.log(username);
+
+    if (username) {
+        window.location = "/chat";
+        return;
+    }
+
+    showUsernameModal();
+}
+
+function showUsernameModal(e) {
+    // e.preventDefault();
     overlay.classList.add("overlay--active");
 }
 

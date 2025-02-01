@@ -33,6 +33,7 @@
 }
 
 .chat__username {
+    font-family: var(--ff-code);
     color: var(--pink-primary);
     font-weight: 600;
 }
