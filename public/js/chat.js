@@ -62,7 +62,7 @@ socket.on("chat_message", (msg) => {
 
 socket.on("user_connection", (user) => {
     const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-message", "chat-connection");
+    messageElem.classList.add("chat-event", "chat-connection");
     messageElem.innerHTML = `<span class="chat-connection chat__username">${user.username}</span> s'est connecté !`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
@@ -71,7 +71,7 @@ socket.on("user_connection", (user) => {
 
 socket.on("user_logout", (user) => {
     const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-message", "chat-logout");
+    messageElem.classList.add("chat-event", "chat-logout");
     messageElem.innerHTML = `<span class="chat-logout chat__username">${user.username}</span> s'est déconnecté !`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =

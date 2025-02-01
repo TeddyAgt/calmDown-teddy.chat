@@ -14,6 +14,7 @@
     border-radius: 4px;
     padding: 8px;
     overflow-y: auto;
+    cursor: default;
 }
 
 .chat__input-group {
@@ -28,6 +29,11 @@
 
 /* messages */
 .chat-message {
+    /* position: relative;
+    padding-left: 16px; */
+}
+
+.chat-event {
     position: relative;
     padding-left: 16px;
 }
@@ -39,6 +45,10 @@
 }
 
 .chat-message::before {
+    /*  */
+}
+
+.chat-event::before {
     content: "";
     position: absolute;
     left: 0;

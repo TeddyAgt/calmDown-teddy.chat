@@ -3,6 +3,7 @@ const usernameModal = document.querySelector("#username-modal");
 const chatBtn = document.querySelector("#chat-link");
 const cancelBtn = document.querySelector("#cancel-btn");
 const usernameForm = document.querySelector("#username-form");
+const usernameInput = document.querySelector("#username");
 const errorMessageElement = document.querySelector(
     "#username-form .form-error"
 );
@@ -12,6 +13,7 @@ usernameModal.addEventListener("click", (e) => e.stopPropagation());
 chatBtn.addEventListener("click", handleClickChatBtn);
 cancelBtn.addEventListener("click", hideUsernameModal);
 usernameForm.addEventListener("submit", handleSubmitUsernameForm);
+usernameInput.addEventListener("change", handleChangeUsernameInput);
 
 function handleClickChatBtn(e) {
     e.preventDefault();
@@ -39,6 +41,8 @@ function hideUsernameModal() {
     overlay.classList.remove("overlay--active");
 }
 
+function handleChangeUsernameInput() {}
+
 function handleSubmitUsernameForm(e) {
     e.preventDefault();
     errorMessageElement.textContent = "";
@@ -51,6 +55,10 @@ function handleSubmitUsernameForm(e) {
     } else if (username.length < 4) {
         errorMessageElement.textContent =
             "Minimum 4 caractères pour le pseudo princesse";
+        return;
+    } else if (username.length > 31) {
+        errorMessageElement.textContent =
+            "Abuse pas le pseudo c'est 31 caractères max bro";
         return;
     }
 

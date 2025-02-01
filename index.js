@@ -3,12 +3,15 @@ const express = require("express");
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const cors = require("cors");
+require("dotenv/config");
+
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.static("public"));
 
-http.listen(3000, () => {
-    console.log("Server started, listening on port 3000");
+http.listen(PORT, () => {
+    console.log(`Server started, listening on port ${PORT}`);
 });
 
 // routes
