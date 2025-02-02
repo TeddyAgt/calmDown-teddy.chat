@@ -54,16 +54,18 @@ function handleInputKeydown(e) {
 socket.on("chat_message", (msg) => {
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-message");
-    messageElem.innerHTML = `<span class="chat__username">${msg.username}</span>: ${msg.message}`;
+    messageElem.innerHTML = `<span class="chat__username"">${msg.username}</span>: ${msg.message}`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
         messagesContainer.scrollHeight - messagesContainer.clientHeight;
 });
 
 socket.on("user_connection", (user) => {
+    console.log(user);
+
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-event", "chat-connection");
-    messageElem.innerHTML = `<span class="chat-connection chat__username">${user.username}</span> s'est connecté !`;
+    messageElem.innerHTML = `<span class="chat-connection chat__username" style="color:${user.color}">${user.username}</span> s'est connecté !`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
         messagesContainer.scrollHeight - messagesContainer.clientHeight;
@@ -72,7 +74,7 @@ socket.on("user_connection", (user) => {
 socket.on("user_logout", (user) => {
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-event", "chat-logout");
-    messageElem.innerHTML = `<span class="chat-logout chat__username">${user.username}</span> s'est déconnecté !`;
+    messageElem.innerHTML = `<span class="chat-logout chat__username"  style="color:${user.color}">${user.username}</span> s'est déconnecté !`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
         messagesContainer.scrollHeight - messagesContainer.clientHeight;

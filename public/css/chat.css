@@ -29,8 +29,27 @@
 
 /* messages */
 .chat-message {
-    /* position: relative;
-    padding-left: 16px; */
+    position: relative;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.chat-message::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    background: var(--grey-dark);
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.chat-message:hover::after {
+    opacity: 0.75;
 }
 
 .chat-event {
@@ -40,7 +59,6 @@
 
 .chat__username {
     font-family: var(--ff-code);
-    color: var(--pink-primary);
     font-weight: 600;
 }
 

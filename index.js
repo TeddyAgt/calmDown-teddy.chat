@@ -2,19 +2,18 @@ const app = require("express")();
 const express = require("express");
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const cors = require("cors");
 require("dotenv/config");
-
+const { colors } = require("./utils/colors.js");
+const { CalmDowner } = require("./classes/CalmDowner.js");
 const PORT = process.env.PORT;
 
-app.use(cors());
 app.use(express.static("public"));
 
 http.listen(PORT, () => {
     console.log(`Server started, listening on port ${PORT}`);
 });
 
-// routes
+// routes **************************************************
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
@@ -23,7 +22,12 @@ app.get("/chat", (req, res) => {
     res.sendFile(__dirname + "/pages/chat.html");
 });
 
-// socket
+// application settings **************************************************
+function setUserColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// socket **************************************************
 io.on("connection", (socket) => {
     console.log("New user connection");
 
@@ -33,7 +37,8 @@ io.on("connection", (socket) => {
 
     socket.on("user_connection", (user) => {
         console.log(`${user.username} is online`);
-        io.emit("user_connection", user);
+        const calmDowner = new CalmDowner(user.username, setUserColor());
+        io.emit("user_connection", calmDowner);
     });
 
     socket.on("user_logout", (user) => {

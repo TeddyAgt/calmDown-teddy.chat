@@ -21,7 +21,6 @@ function handleClickChatBtn(e) {
         .split("; ")
         .find((brownie) => brownie.startsWith("username="))
         ?.split("=")[1];
-    console.log(username);
 
     if (username) {
         window.location = "/chat";
