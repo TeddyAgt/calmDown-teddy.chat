@@ -6,7 +6,7 @@ require("dotenv/config");
 const { colors } = require("./utils/colors.js");
 const { CalmDowner } = require("./classes/CalmDowner.js");
 const PORT = process.env.PORT;
-const users = [];
+let users = [];
 
 app.use(express.static("public"));
 
@@ -36,6 +36,7 @@ io.on("connection", (socket) => {
         console.log(`${user.username} is online`);
         const calmDowner = new CalmDowner(user.username, setUserColor());
         users.push(calmDowner);
+
         io.emit("user_connection", calmDowner);
         io.emit("user-list_update", users);
     });
@@ -46,6 +47,11 @@ io.on("connection", (socket) => {
 
     socket.on("user_logout", (user) => {
         console.log(`${user.username} is offline`);
+        users = users.filter((u) => {
+            return u.username !== user.username;
+        });
+
+        io.emit("user-list_update", users);
         io.emit("user_logout", user);
     });
 

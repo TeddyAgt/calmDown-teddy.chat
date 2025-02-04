@@ -28,6 +28,8 @@ function handleUserConnection() {
 }
 
 function handleUserLogout() {
+    console.log(username);
+
     socket.emit("user_logout", {
         username: username,
     });
@@ -71,6 +73,19 @@ socket.on("user_logout", (user) => {
         messagesContainer.scrollHeight - messagesContainer.clientHeight;
 });
 
+socket.on("user-list_update", (users) => {
+    console.log(users);
+
+    userList.innerHTML = "";
+    users.map((user) => {
+        const userListElem = document.createElement("li");
+        userListElem.classList.add("connected-users-list__item");
+        userListElem.style.color = user.color;
+        userListElem.textContent = user.username;
+        userList.appendChild(userListElem);
+    });
+});
+
 socket.on("chat_message", (msg) => {
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-message");
@@ -78,15 +93,4 @@ socket.on("chat_message", (msg) => {
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
         messagesContainer.scrollHeight - messagesContainer.clientHeight;
-});
-
-socket.on("user-list_update", (users) => {
-    userList.innerHTML = "";
-    users.forEach((user) => {
-        const userListElem = document.createElement("li");
-        userListElem.classList.add("connected-users-list__item");
-        userListElem.style.color = user.color;
-        userListElem.textContent = user.username;
-        userList.appendChild(userListElem);
-    });
 });
