@@ -27,8 +27,10 @@
     </header>
 
     <main>
+        <h1 class="main-title">Chat <span class="main-title__hint">(pas celui qui miaule)</span></h1>
+
+        <!-- chat section -->
         <section class="chat-section">
-            <h1 class="main-title">Chat <span class="main-title__hint">(pas celui qui miaule)</span></h1>
             <div class="messages-container" id="messages-container"></div>
             <form id="message-form" method="POST">
                 <div class="chat__input-group">
@@ -40,6 +42,12 @@
                 </div>
             </form>
         </section>
+
+        <!-- connected users list -->
+        <aside class="connected-users-section">
+            <h2 class="section-title color-pink">Utilisateurs connectés</h2>
+            <ul class="connected-users-list" id="connected-users-list"></ul>
+        </aside>
     </main>
 
     <!-- footer -->

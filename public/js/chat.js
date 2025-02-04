@@ -7,11 +7,13 @@ if (!username) {
     window.location = "/";
 }
 
+// DOM elements
 const socket = io();
 const messageForm = document.querySelector("#message-form");
 const usernameInput = document.querySelector("#username");
 const messageInput = document.querySelector("#message");
 const messagesContainer = document.querySelector("#messages-container");
+const userList = document.querySelector("#connected-users-list");
 
 messageForm.addEventListener("submit", handleSubmitMessageForm);
 messageInput.addEventListener("keydown", handleInputKeydown);
@@ -51,18 +53,7 @@ function handleInputKeydown(e) {
     }
 }
 
-socket.on("chat_message", (msg) => {
-    const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-message");
-    messageElem.innerHTML = `<span class="chat__username"">${msg.username}</span>: ${msg.message}`;
-    messagesContainer.appendChild(messageElem);
-    messagesContainer.scrollTop =
-        messagesContainer.scrollHeight - messagesContainer.clientHeight;
-});
-
 socket.on("user_connection", (user) => {
-    console.log(user);
-
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-event", "chat-connection");
     messageElem.innerHTML = `<span class="chat-connection chat__username" style="color:${user.color}">${user.username}</span> s'est connecté !`;
@@ -78,4 +69,24 @@ socket.on("user_logout", (user) => {
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
         messagesContainer.scrollHeight - messagesContainer.clientHeight;
+});
+
+socket.on("chat_message", (msg) => {
+    const messageElem = document.createElement("p");
+    messageElem.classList.add("chat-message");
+    messageElem.innerHTML = `<span class="chat__username"">${msg.username}</span>: ${msg.message}`;
+    messagesContainer.appendChild(messageElem);
+    messagesContainer.scrollTop =
+        messagesContainer.scrollHeight - messagesContainer.clientHeight;
+});
+
+socket.on("user-list_update", (users) => {
+    userList.innerHTML = "";
+    users.forEach((user) => {
+        const userListElem = document.createElement("li");
+        userListElem.classList.add("connected-users-list__item");
+        userListElem.style.color = user.color;
+        userListElem.textContent = user.username;
+        userList.appendChild(userListElem);
+    });
 });

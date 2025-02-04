@@ -1,7 +1,34 @@
-/* page structure */
+/* general */
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+}
+
+.main-title {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.section-title {
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .main-title {
+        grid-column: 1;
+    }
+}
+
+/* chat section */
 .chat-section {
-    max-width: 800px;
-    margin-inline: auto;
+    /* max-width: 800px;
+    width: 100%; */
+    /* margin-inline: auto; */
 }
 
 .chat-section .main-title {
@@ -25,6 +52,18 @@
     width: 100%;
     resize: none;
     outline: none;
+}
+
+/* user list */
+.connected-users-section {
+    padding: 16px;
+    border: 1px solid var(--pink-primary);
+    border-radius: 4px;
+    height: fit-content;
+}
+
+.connected-users-list {
+    list-style-type: none;
 }
 
 /* messages */

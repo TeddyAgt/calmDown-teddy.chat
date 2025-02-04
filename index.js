@@ -6,6 +6,7 @@ require("dotenv/config");
 const { colors } = require("./utils/colors.js");
 const { CalmDowner } = require("./classes/CalmDowner.js");
 const PORT = process.env.PORT;
+const users = [];
 
 app.use(express.static("public"));
 
@@ -31,14 +32,16 @@ function setUserColor() {
 io.on("connection", (socket) => {
     console.log("New user connection");
 
-    socket.on("disconnect", (socket) => {
-        console.log("User disconnected");
-    });
-
     socket.on("user_connection", (user) => {
         console.log(`${user.username} is online`);
         const calmDowner = new CalmDowner(user.username, setUserColor());
+        users.push(calmDowner);
         io.emit("user_connection", calmDowner);
+        io.emit("user-list_update", users);
+    });
+
+    socket.on("disconnect", (socket) => {
+        console.log("User disconnected");
     });
 
     socket.on("user_logout", (user) => {

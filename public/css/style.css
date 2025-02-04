@@ -115,6 +115,11 @@ h6 {
     color: var(--pink-primary);
 }
 
+/* utils */
+.color-pink {
+    color: var(--pink-primary);
+}
+
 /* forms */
 input:not([type="radio"], [type="checkbox"]),
 textarea {
