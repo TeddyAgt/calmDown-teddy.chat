@@ -42,6 +42,8 @@ main {
     padding: 8px;
     overflow-y: auto;
     cursor: default;
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.25),
+        inset -1px -2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .chat__input-group {
@@ -67,9 +69,16 @@ main {
 }
 
 /* messages */
+.chat-element {
+    margin-bottom: 4px;
+    position: relative;
+    z-index: -1;
+}
+
 .chat-message {
     position: relative;
     border-radius: 4px;
+    padding: 4px;
 }
 
 .chat-message::after {
@@ -82,12 +91,12 @@ main {
     width: 100%;
     border-radius: 4px;
     background: var(--grey-dark);
-    opacity: 0;
+    opacity: 0.75;
     transition: opacity 0.2s ease-out;
 }
 
 .chat-message:hover::after {
-    opacity: 0.75;
+    opacity: 1;
 }
 
 .chat-event {

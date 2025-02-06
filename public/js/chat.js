@@ -59,7 +59,7 @@ function handleInputKeydown(e) {
 
 socket.on("user_connection", (user) => {
     const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-event", "chat-connection");
+    messageElem.classList.add("chat-event", "chat-element", "chat-connection");
     messageElem.innerHTML = `<span class="chat-connection chat__username" style="color:${user.color}">${user.username}</span> s'est connecté !`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
@@ -68,7 +68,7 @@ socket.on("user_connection", (user) => {
 
 socket.on("user_logout", (user) => {
     const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-event", "chat-logout");
+    messageElem.classList.add("chat-event", "chat-element", "chat-logout");
     messageElem.innerHTML = `<span class="chat-logout chat__username"  style="color:${user.color}">${user.username}</span> s'est déconnecté !`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
@@ -88,7 +88,7 @@ socket.on("user-list_update", (users) => {
 
 socket.on("chat_message", (msg) => {
     const messageElem = document.createElement("p");
-    messageElem.classList.add("chat-message");
+    messageElem.classList.add("chat-message", "chat-element");
     messageElem.innerHTML = `<span class="chat__username" style="color:${msg.author.color}">${msg.author.username}</span>: ${msg.message}`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
