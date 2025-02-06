@@ -31,8 +31,8 @@ function handleClickChatBtn(e) {
 }
 
 function showUsernameModal(e) {
-    // e.preventDefault();
     overlay.classList.add("overlay--active");
+    usernameInput.focus();
 }
 
 function hideUsernameModal() {

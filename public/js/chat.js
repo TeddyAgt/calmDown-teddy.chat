@@ -15,6 +15,8 @@ const messageInput = document.querySelector("#message");
 const messagesContainer = document.querySelector("#messages-container");
 const userList = document.querySelector("#connected-users-list");
 
+const clientUser = {};
+
 messageForm.addEventListener("submit", handleSubmitMessageForm);
 messageInput.addEventListener("keydown", handleInputKeydown);
 window.addEventListener("beforeunload", handleUserLogout);
@@ -39,7 +41,7 @@ function handleSubmitMessageForm(e) {
     e.preventDefault();
 
     socket.emit("chat_message", {
-        username: username,
+        author: clientUser,
         message: messageInput.value,
     });
     messageForm.reset();
@@ -48,7 +50,7 @@ function handleSubmitMessageForm(e) {
 function handleInputKeydown(e) {
     if (e.keyCode === 13) {
         socket.emit("chat_message", {
-            username: username,
+            author: clientUser,
             message: messageInput.value,
         });
         messageForm.reset();
@@ -74,8 +76,6 @@ socket.on("user_logout", (user) => {
 });
 
 socket.on("user-list_update", (users) => {
-    console.log(users);
-
     userList.innerHTML = "";
     users.map((user) => {
         const userListElem = document.createElement("li");
@@ -89,8 +89,13 @@ socket.on("user-list_update", (users) => {
 socket.on("chat_message", (msg) => {
     const messageElem = document.createElement("p");
     messageElem.classList.add("chat-message");
-    messageElem.innerHTML = `<span class="chat__username"">${msg.username}</span>: ${msg.message}`;
+    messageElem.innerHTML = `<span class="chat__username" style="color:${msg.author.color}">${msg.author.username}</span>: ${msg.message}`;
     messagesContainer.appendChild(messageElem);
     messagesContainer.scrollTop =
         messagesContainer.scrollHeight - messagesContainer.clientHeight;
+});
+
+socket.on("set_client-user", (serverUser) => {
+    clientUser.username = serverUser.username;
+    clientUser.color = serverUser.color;
 });

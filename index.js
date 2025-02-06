@@ -37,6 +37,7 @@ io.on("connection", (socket) => {
         const calmDowner = new CalmDowner(user.username, setUserColor());
         users.push(calmDowner);
 
+        io.to(socket.id).emit("set_client-user", calmDowner);
         io.emit("user_connection", calmDowner);
         io.emit("user-list_update", users);
     });

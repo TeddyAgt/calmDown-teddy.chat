@@ -70,7 +70,6 @@ main {
 .chat-message {
     position: relative;
     border-radius: 4px;
-    padding: 4px;
 }
 
 .chat-message::after {
