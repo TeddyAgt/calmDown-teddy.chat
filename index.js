@@ -57,6 +57,8 @@ io.on("connection", (socket) => {
     });
 
     socket.on("chat_message", (msg) => {
+        console.log(`New message from ${msg.author.username}`);
+
         io.emit("chat_message", msg);
     });
 });

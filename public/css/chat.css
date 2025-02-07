@@ -71,8 +71,6 @@ main {
 /* messages */
 .chat-element {
     margin-bottom: 4px;
-    position: relative;
-    z-index: -1;
 }
 
 .chat-message {

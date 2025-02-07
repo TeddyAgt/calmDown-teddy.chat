@@ -55,3 +55,34 @@
 .username-modal__back-link img {
     width: 100%;
 }
+
+.share-section {
+    max-width: 1240px;
+    margin-inline: auto;
+}
+
+.music-article,
+.meme-article {
+    margin-bottom: 32px;
+}
+
+.spotify-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.memes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.meme {
+    max-width: 196px;
+    width: 100%;
+}

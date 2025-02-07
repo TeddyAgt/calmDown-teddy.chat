@@ -147,6 +147,7 @@ header {
     color: var(--pink-primary);
     font-size: var(--fz-32);
     font-weight: 700;
+    transition: opacity 0.2s ease-out;
 }
 
 .main-navigation {
@@ -156,6 +157,12 @@ header {
 
 .navigation__link {
     font-size: var(--fz-24);
+    transition: opacity 0.2s ease-out;
+}
+
+.header__logo:hover,
+.navigation__link:hover {
+    opacity: 0.8;
 }
 
 /* footer */
